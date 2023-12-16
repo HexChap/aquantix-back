@@ -1,22 +1,13 @@
 from pathlib import Path
 
-from pydantic import BaseSettings, Field
+from pydantic import Field
+from pydantic_settings import BaseSettings
 
 ENVS_PATH = Path("env")
 
 __all__ = [
     "settings"
 ]
-
-
-# noinspection PyUnboundLocalVariable
-class _DBSettings(BaseSettings):
-    driver: str
-    user: str
-    password: str
-    host: str
-    port: int
-    database: str
 
 
 class _SecuritySettings(BaseSettings):
@@ -34,17 +25,14 @@ class _APISettings(BaseSettings):
 
 
 class _Settings(BaseSettings):
-    db: _DBSettings
     security: _SecuritySettings
     api: _APISettings
 
 
-_db_settings = _DBSettings(_env_file=ENVS_PATH / "db.env")
 _security_settings = _SecuritySettings(_env_file=ENVS_PATH / "security.env")
 _api_settings = _APISettings(_env_file=ENVS_PATH / "api.env")
 
 settings = _Settings(
-    db=_db_settings,
     security=_security_settings,
     api=_api_settings
 )

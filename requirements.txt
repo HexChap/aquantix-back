@@ -1,10 +1,10 @@
-fastapi~=0.78.0
-tortoise-orm[asyncpg]
-uvicorn~=0.18.2
-aerich
-pydantic~=1.9.1
+fastapi
+firebase-admin
+uvicorn
+pydantic
 pydantic[email]
+pydantic-settings
 pydantic[dotenv]
-passlib~=1.7.4
+passlib
 bcrypt
-python-jose~=3.3.0
+python-jose
