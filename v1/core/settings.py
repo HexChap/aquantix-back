@@ -10,7 +10,7 @@ __all__ = [
 ]
 
 
-class _SecuritySettings(BaseSettings):
+class _SecuritySettings:
     access_token_expire_minutes: int
     secret_key: str
     algorithm: str
@@ -25,14 +25,16 @@ class _APISettings(BaseSettings):
 
 
 class _Settings(BaseSettings):
-    security: _SecuritySettings
     api: _APISettings
 
 
-_security_settings = _SecuritySettings(_env_file=ENVS_PATH / "security.env")
-_api_settings = _APISettings(_env_file=ENVS_PATH / "api.env")
+_api_settings = _APISettings(
+    title="Aquantix API",
+    version="1",
+    build_version="0",
+    version_path=Path("v1")
+)
 
 settings = _Settings(
-    security=_security_settings,
     api=_api_settings
 )

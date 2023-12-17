@@ -4,7 +4,7 @@ from fastapi import APIRouter, HTTPException, Response, Depends, status
 from fastapi.responses import JSONResponse
 
 # from v1.core.dependencies import get_current_active_user
-from v1.core import settings, errors
+# from v1.core import settings, errors
 
 __tags__ = ["auth"]
 __prefix__ = ""

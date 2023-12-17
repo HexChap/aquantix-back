@@ -1,6 +1,7 @@
 import importlib
 import os
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 import uvicorn as uvicorn
 from fastapi import FastAPI
@@ -32,6 +33,7 @@ def include_routers(app: FastAPI):
 
 @asynccontextmanager
 async def on_startup(app: FastAPI):
+    # print(os.environ["GOOGLE_APPLICATION_CREDENTIALS"])
     init_firebase()
     include_routers(app)
 
